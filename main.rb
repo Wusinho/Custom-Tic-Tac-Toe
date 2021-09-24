@@ -51,3 +51,5 @@ puts "Who starts #{player1[:name]} or #{player2[:name]}, type the correct name  
   answer = gets.chomp while answer == '' 
   answer = gets.chomp while answer != player2[:name] && answer != player1[:name] 
   answer == player1[:name] ? player1[:starts] = true : player2[:starts] = true
+
+puts 'What size of board would you like, plz type a number'
