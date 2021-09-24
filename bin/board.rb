@@ -25,29 +25,11 @@ class BoardGame
       gap = x * @size
       @board.push(@game_board[gap...gap+(@size)])
     end
-    array_2D_print(@board)
+    print_board(@board)
   end
 
 
-  def print_table(table, margin_width = 2)
-  
-    column_widths = []
-    table.each do |row|
-      row.each.with_index do |cell, column_num|
-        column_widths[column_num] = [ column_widths[column_num] || 0, cell.to_s.size ].max
-      end
-    end
-    p column_widths
-  
-    puts (table.collect do |row|
-      row.collect.with_index do |cell, column_num|
-        cell.to_s.ljust(column_widths[column_num] + margin_width)
-      end.join
-    end)
-
-  end
-
-  def array_2D_print(array)
+  def print_board(array)
     array.each do |arr|
         arr.each do |item|
           
