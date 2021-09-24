@@ -1,10 +1,10 @@
 class BoardGame
 
-  def initialize(size)
+  def initialize(size, player1, player2 )
     @size = size
     @game_board = []
-    # @player1 = player1
-    # @player2 = player2
+    @player1 = player1
+    @player2 = player2
   end
 
   def reset_board
@@ -44,6 +44,14 @@ class BoardGame
         (@size).times { print '------'}
         print "\n"
     end
+  end
+
+  def postion_taken?(input, symbol)
+    @game_board[input] != symbol
+  end
+
+  def valid_move?(input, symbol)
+    input.between(0, @game_board.length-1) && !postion_taken?(input, symbol)
   end
 
   def to_s

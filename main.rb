@@ -1,4 +1,5 @@
   require_relative './lib/player.rb'
+  require_relative './bin/analize.rb'
 
 game = [ 'player1', 'player2']
 
@@ -19,7 +20,9 @@ player2 = {
   win: false,
   draw: false,
 }
- 
+
+@analize = Analize.new
+
 # Player 1 name
 puts 'Please enter a name for player1'
   player1[:name] = gets.chomp
