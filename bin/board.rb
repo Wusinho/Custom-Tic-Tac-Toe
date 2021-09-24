@@ -41,7 +41,7 @@ class BoardGame
           end
         end
         print "\n"
-        (@size*6).times { print '-'}
+        (@size).times { print '------'}
         print "\n"
     end
   end
