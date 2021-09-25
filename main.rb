@@ -65,7 +65,7 @@ puts "Who starts #{player1[:name]} or #{player2[:name]}, type the correct name  
 
   puts 'Choose between 3-5 streaks to win'
   win_streak = gets.chomp
-  win_streak = gets.chomp while !check_class(win_streak, counter_token, 6, 2)
+  win_streak = gets.chomp while !check_class(win_streak, counter_token, 5, 2)
 
 player_1 = Player.new(
   player1[:name],

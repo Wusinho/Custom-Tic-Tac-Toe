@@ -37,13 +37,7 @@ class BoardGame
         print "\n"
       end
         arr.each do |item|
-          
-          if item.to_s.size == 1
-            print "|  #{item} |"
-
-          else
-            print "| #{item} |"
-          end
+          print item.to_s.size == 1 ?  "|  #{item} |" :  "| #{item} |"
         end
         print "\n"
         (@size).times { print '------'}
