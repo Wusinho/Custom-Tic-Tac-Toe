@@ -1,14 +1,15 @@
   require_relative './bin/player.rb'
   require_relative './bin/game.rb'
 
-board_size = 0
+counter_token = 0
 
-  def check_class(data)
+  def check_class(data, counter, max_num, min_num)
     return unless Integer(data, exception: false)
-    board_size = Integer(data)
-      return false if board_size > 10 || board_size <= 2
-    board_size
+    counter = Integer(data)
+      return false if counter > max_num || counter <= min_num
+    counter
   end
+
 
 player1 = {
   name: '',
@@ -58,13 +59,13 @@ puts "Who starts #{player1[:name]} or #{player2[:name]}, type the correct name  
   answer = gets.chomp while answer != player2[:name] && answer != player1[:name] 
   answer == player1[:name] ? player1[:starts] = true : player2[:starts] = true
 
-  puts 'Choose a board size between 3-10'
-  answer = gets.chomp
-  answer = gets.chomp while !check_class(answer)
+  puts 'Choose a board size between 5-10'
+  board_size = gets.chomp
+  board_size = gets.chomp while !check_class(board_size, counter_token, 10, 4)
 
-
-  # answer = gets.chomp while answer != player2[:name] && answer != player1[:name] 
-  # answer == player1[:name] ? player1[:starts] = true : player2[:starts] = true
+  puts 'Choose between 3-5 streaks to win'
+  win_streak = gets.chomp
+  win_streak = gets.chomp while !check_class(win_streak, counter_token, 6, 2)
 
 player_1 = Player.new(
   player1[:name],
@@ -81,4 +82,6 @@ player_2 = Player.new(
   player2[:draw]
 )
 
-Game.new(board_size,player_1, player_2)
+nuevo_juego = BoardGame.new(board_size.to_i, win_streak.to_i,player_1, player_2)
+nuevo_juego.create_board
+nuevo_juego.display_board

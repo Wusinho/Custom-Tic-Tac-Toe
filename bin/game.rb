@@ -2,11 +2,12 @@ require_relative './analize.rb'
 
 class BoardGame
 
-  def initialize(size, player1, player2 )
+  def initialize(size, streaks, player1, player2 )
     @size = size
     @game_board = []
     @player1 = player1
     @player2 = player2
+    @streaks = streaks
   end
 
   def reset_board
@@ -16,9 +17,6 @@ class BoardGame
   def create_board
     board_size = @size * @size
     @game_board = (0...board_size).to_a
-    # board_size.times do
-    #   @game_board << ' '
-    # end
   end
 
   def display_board
