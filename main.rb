@@ -8,6 +8,7 @@
     true
   end
 
+  round =0
 
 # player1 = {
 #   name: '',
@@ -103,26 +104,28 @@ game = Game.new(board_size.to_i, win_streak.to_i,player_1, player_2)
 game.create_board
 game.display_board
 board_size = 4
-count =0
-until player1[:win] || player2[:win]
-  
-  first_player = player2[:starts] ? player2 : player1
-  second_player = !player2[:starts] ? player2 : player1
 
-  @current_player = count.even? ? first_player : second_player
-print "\n"
-puts "#{@current_player[:name]} please choose a valid space"
-print "\n"
-  empty_space = gets.chomp.to_i
-  empty_space = gets.chomp.to_i while !game.valid_move?(empty_space, first_player[:symbol], second_player[:symbol])
-puts "#{@current_player[:name]} choose #{empty_space}"
-  game.new_move(empty_space,  @current_player[:symbol])
-  game.display_board
-  
-  count += 1
-puts "DRAW" if count == board_size.to_i * board_size.to_i
-  break if count == board_size.to_i * board_size.to_i
-end
+max_rounds = board_size.to_i * board_size.to_i
+
+first_player = player2[:starts] ? player2 : player1
+second_player = !player2[:starts] ? player2 : player1
+
+  until player1[:win] || player2[:win]
+
+    @current_player = round.even? ? first_player : second_player
+  print "\n"
+  puts "#{@current_player[:name]} please choose a valid space"
+  print "\n"
+    players_move = gets.chomp.to_i
+    players_move = gets.chomp.to_i while !game.valid_move?(players_move, first_player[:symbol], second_player[:symbol])
+  puts "#{@current_player[:name]} choose #{players_move}"
+    game.new_move(players_move,  @current_player[:symbol])
+    game.display_board
+
+    round += 1
+  puts "DRAW" if round == max_rounds
+    break if round == max_rounds
+  end
 
 
 # nuevo_juego.new_move(2)

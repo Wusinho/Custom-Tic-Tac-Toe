@@ -41,15 +41,15 @@ class BoardGame
     end
   end
 
-  def postion_taken?(input, symbol_player1, symbol_player2)
-    @game_board[input] == symbol_player1 || @game_board[input] == symbol_player2
+  def postion_taken?(index, symbol_player1, symbol_player2)
+    @game_board[index] == symbol_player1 || @game_board[index] == symbol_player2
   end
 
-  def valid_move?(input, symbol_player1, symbol_player2)
-    input.between?(0, @game_board.length-1) && !postion_taken?(input, symbol_player1, symbol_player2)
+  def valid_move?(index, symbol_player1, symbol_player2)
+    index.between?(0, @game_board.length-1) && !postion_taken?(index, symbol_player1, symbol_player2)
   end
-  def new_move(input, symbol )
-      @game_board[input] = symbol
+  def new_move(index, symbol )
+      @game_board[index] = symbol
   end
 
 
