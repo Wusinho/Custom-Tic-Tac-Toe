@@ -98,7 +98,7 @@ player_2 = Player.new(
 
 # p player1[:win]
 
-board_size = 3
+board_size = 4
 win_streak = 3
 game = Game.new(board_size.to_i, win_streak.to_i,player_1, player_2)
 game.create_board
@@ -126,7 +126,3 @@ second_player = !player2[:starts] ? player2 : player1
   puts "DRAW" if round == max_rounds
     break if round == max_rounds
   end
-
-
-# nuevo_juego.new_move(2)
-# nuevo_juego.display_board
