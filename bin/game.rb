@@ -2,13 +2,13 @@ require_relative './analize.rb'
 
 class BoardGame
 
-  def initialize(size, streaks, player1, player2 )
-    @size = size
-    @game_board = []
-    @player1 = player1
-    @player2 = player2
-    @streaks = streaks
-  end
+  # def initialize(size, streaks, player1, player2 )
+  #   @size = size
+  #   @game_board = []
+  #   @player1 = player1
+  #   @player2 = player2
+  #   @streaks = streaks
+  # end
 
   def reset_board
     @game_board = []
@@ -30,7 +30,12 @@ class BoardGame
 
 
   def print_board(array)
-    array.each do |arr|
+    print "\n"
+    array.each_with_index do |arr, index|
+      if index == 0
+        (@size).times { print '------'} 
+        print "\n"
+      end
         arr.each do |item|
           
           if item.to_s.size == 1
@@ -61,6 +66,12 @@ class BoardGame
 end
 
 class Game < BoardGame
-  
+  def initialize(size, streaks, player1, player2 )
+    @size = size
+    @game_board = []
+    @player1 = player1
+    @player2 = player2
+    @streaks = streaks
+  end
 end
 

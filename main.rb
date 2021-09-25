@@ -82,6 +82,6 @@ player_2 = Player.new(
   player2[:draw]
 )
 
-nuevo_juego = BoardGame.new(board_size.to_i, win_streak.to_i,player_1, player_2)
+nuevo_juego = Game.new(board_size.to_i, win_streak.to_i,player_1, player_2)
 nuevo_juego.create_board
 nuevo_juego.display_board
