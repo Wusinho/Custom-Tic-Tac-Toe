@@ -1,17 +1,14 @@
 require_relative './analize.rb'
 
 class BoardGame
+  attr_accessor :game_board, :size
 
-  # def initialize(size, streaks, player1, player2 )
-  #   @size = size
-  #   @game_board = []
-  #   @player1 = player1
-  #   @player2 = player2
-  #   @streaks = streaks
-  # end
-
-  def reset_board
+  def initialize(size, streaks, player1, player2 )
+    @size = size
     @game_board = []
+    @player1 = player1
+    @player2 = player2
+    @streaks = streaks
   end
 
   def create_board
@@ -20,14 +17,13 @@ class BoardGame
   end
 
   def display_board
-    @board = []
+    board = []
     @size.times do |x|
       gap = x * @size
-      @board.push(@game_board[gap...gap+(@size)])
+      board.push(@game_board[gap...gap+(@size)])
     end
-    print_board(@board)
+    print_board(board)
   end
-
 
   def print_board(array)
     print "\n"
@@ -45,17 +41,18 @@ class BoardGame
     end
   end
 
-  def postion_taken?(input, symbol)
-    @game_board[input] != symbol
+  def postion_taken?(input, symbol_player1, symbol_player2)
+    @game_board[input] == symbol_player1 || @game_board[input] == symbol_player2
   end
 
-  def valid_move?(input, symbol)
-    input.between(0, @game_board.length-1) && !postion_taken?(input, symbol)
+  def valid_move?(input, symbol_player1, symbol_player2)
+    puts 'plz choose a valid move'
+    input.between?(0, @game_board.length-1) && !postion_taken?(input, symbol_player1, symbol_player2)
+  end
+  def new_move(input, symbol )
+      @game_board[input] = symbol
   end
 
-  def to_s
-    "#{@player1} #{@player2}"
-  end
 
 end
 
@@ -66,6 +63,12 @@ class Game < BoardGame
     @player1 = player1
     @player2 = player2
     @streaks = streaks
+  end
+
+
+
+  def turns
+    
   end
 end
 

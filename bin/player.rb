@@ -10,4 +10,8 @@ class Player
     @draw = draw
   end
 
+  def to_s
+    "#{@name} who starts #{@starts} and who draws #{draw}"
+  end
+
 end
