@@ -1,9 +1,14 @@
-  require_relative './lib/player.rb'
-  require_relative './bin/analize.rb'
+  require_relative './bin/player.rb'
+  require_relative './bin/game.rb'
 
-game = [ 'player1', 'player2']
+board_size = 0
 
-# puts 'There are 2 players'
+  def check_class(data)
+    return unless Integer(data, exception: false)
+    board_size = Integer(data)
+      return false if board_size > 10 || board_size <= 2
+    board_size
+  end
 
 player1 = {
   name: '',
@@ -20,8 +25,6 @@ player2 = {
   win: false,
   draw: false,
 }
-
-@analize = Analize.new
 
 # Player 1 name
 puts 'Please enter a name for player1'
@@ -55,4 +58,27 @@ puts "Who starts #{player1[:name]} or #{player2[:name]}, type the correct name  
   answer = gets.chomp while answer != player2[:name] && answer != player1[:name] 
   answer == player1[:name] ? player1[:starts] = true : player2[:starts] = true
 
-puts 'What size of board would you like, plz type a number'
+  puts 'Choose a board size between 3-10'
+  answer = gets.chomp
+  answer = gets.chomp while !check_class(answer)
+
+
+  # answer = gets.chomp while answer != player2[:name] && answer != player1[:name] 
+  # answer == player1[:name] ? player1[:starts] = true : player2[:starts] = true
+
+player_1 = Player.new(
+  player1[:name],
+  player1[:symbol],
+  player1[:starts],
+  player1[:win],
+  player1[:draw]
+)
+player_2 = Player.new(
+  player2[:name],
+  player2[:symbol],
+  player2[:starts],
+  player2[:win],
+  player2[:draw]
+)
+
+Game.new(board_size,player_1, player_2)

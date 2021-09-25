@@ -1,3 +1,5 @@
+require_relative './analize.rb'
+
 class BoardGame
 
   def initialize(size, player1, player2 )
@@ -55,15 +57,12 @@ class BoardGame
   end
 
   def to_s
-    "the board size is #{@game_board.length}"
+    "#{@player1} #{@player2}"
   end
 
 end
 
-
-
-newboard = BoardGame.new(4)
-newboard.create_board
-newboard.display_board
-# newboard.display_board
+class Game < BoardGame
+  
+end
 

@@ -1,12 +1,13 @@
 
-class Player < Person
+class Player
   attr_accessor :sign, :symbol, :starts, :win, :draw
+
   def initialize(name, symbol, starts, win, draw)
     @name = name
     @symbol = symbol
     @starts = starts
     @win = win,
-    @draw = draw,
+    @draw = draw
   end
 
 end
