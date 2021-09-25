@@ -46,7 +46,6 @@ class BoardGame
   end
 
   def valid_move?(input, symbol_player1, symbol_player2)
-    puts 'plz choose a valid move'
     input.between?(0, @game_board.length-1) && !postion_taken?(input, symbol_player1, symbol_player2)
   end
   def new_move(input, symbol )

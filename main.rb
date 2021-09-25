@@ -97,7 +97,7 @@ player_2 = Player.new(
 
 # p player1[:win]
 
-board_size = 5
+board_size = 3
 win_streak = 3
 game = Game.new(board_size.to_i, win_streak.to_i,player_1, player_2)
 game.create_board
@@ -110,15 +110,17 @@ until player1[:win] || player2[:win]
   second_player = !player2[:starts] ? player2 : player1
 
   @current_player = count.even? ? first_player : second_player
-  puts " #{@current_player[:name]} please choose a valid space"
+print "\n"
+puts "#{@current_player[:name]} please choose a valid space"
+print "\n"
   empty_space = gets.chomp.to_i
   empty_space = gets.chomp.to_i while !game.valid_move?(empty_space, first_player[:symbol], second_player[:symbol])
-  
+puts "#{@current_player[:name]} choose #{empty_space}"
   game.new_move(empty_space,  @current_player[:symbol])
   game.display_board
   
   count += 1
-  puts "DRAW" if count == board_size.to_i * board_size.to_i
+puts "DRAW" if count == board_size.to_i * board_size.to_i
   break if count == board_size.to_i * board_size.to_i
 end
 
