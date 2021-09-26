@@ -1,24 +1,32 @@
-def check_top_left_to_right(arr, size, streak, simbol ) 
+def check_down_left_to_right(arr, size, streak, simbol )
   arr_check = []
   arr_check2 = []
   max_times = size - streak + 1 # compared with streaks
+  safe_streak = streak # save streak, in case it iterates
+  index_start = streak - 1
+  safe_size = size - 1 # minu 1 because we don't need to repeat the biggest line in 2nd loop
+
+
   max_times.times do |count|
 
-    arr.length.times do |index|
-      first_half = arr[count+((size+1)*index)]
-      second_half = arr[(count*size)+((size+1)*index)]
-      
-      arr_check << first_half if arr_check.length < (size - count)
-      arr_check2 << second_half if arr_check2.length < (size - count) && count > 0
+    safe_streak.times do | index|
+      first_half = arr[(index_start+count)+(index*(size-1))]
+        arr_check << first_half if arr_check.length <= safe_streak
+
     end
 
-p arr_check2 if arr_check2.length > 0
-p arr_check 
+    safe_size.times do | index |
+      second_half = arr[(size-1)+(safe_size*index)+((size)*count)]
+      arr_check2 << second_half if count > 0 && second_half
+    end
+    
+      p arr_check
+      p arr_check2
+      arr_check = []
+      arr_check2 = []  
 
-arr_check = []
-arr_check2 = []
-
-end
+      safe_streak += 1
+  end
 
 end
 
@@ -45,36 +53,26 @@ game_streak2 = 4
 player_symbol = 'X'
 
 # check_top_left_to_right(array, game_size1, game_streak1, player_symbol ) 
-check_top_left_to_right(array2, game_size2, game_streak1, player_symbol ) 
-check_top_left_to_right(array3, game_size3, game_streak1, player_symbol ) 
+# check_down_left_to_right(array2, game_size2, game_streak1, player_symbol ) 
+# check_down_left_to_right(array3, game_size3, game_streak1, player_symbol ) 
 
 
-
-#version 2
-# def check_top_left_to_right(arr, size, streak, simbol ) 
-# arr_check=[]
-
+# version #1
+# def check_down_left_to_right(arr, size, streak, simbol )
+#   arr_check = []
+#   max_times = size - streak + 1 # compared with streaks
+#   index = size - 1
+#   max_times.times do |count|
 
 #     arr.each_with_index do |element, index|
-  
-#       streak.times do |i|
-#         # p i
-#         # p size
-#          arr_check << arr[index + (size+1)*i] if arr[index + (size+1)*i]
-
-
+#       if index !=0 && index != arr.length-1
+#         arr_check << element if (index) % (size-1) == 0 
 #       end
-#       arr_check = [] if arr_check.length < streak
-#     p arr_check
-#       arr_check = []
-   
 #     end
+#   p arr_check
+#   arr_check = []
 
-
+#   end
 # end
 
-# check_top_right_to_left
-
-# array = [ 'X',1, 2,
-#            3,'X',5,
-#            6, 7,'X' ]
+# p (0..2).to_a
