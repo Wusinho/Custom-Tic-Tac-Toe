@@ -5,7 +5,6 @@ class Analize
     return if arr == []
     n_times =  size - (streak -1)
       n_times.times do |count|
-        # p arr[count...streak+count]
         return true && arr[count...streak+count].all?{|x| x == simbol} 
       end
   end
