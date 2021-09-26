@@ -5,7 +5,6 @@ class Analize
       n_times.times do |count|
         return true && arr[count...streak+count].all?{|x| x == simbol} 
       end
-    false
   end
 
   def check_rows(arr, size, streak, simbol )
@@ -85,7 +84,7 @@ checking = Analize.new
 # check_collumns
 # array = [ 0,'X',2,
 #           3,'X',5,
-#           6,'X',8 ]
+#           6,7,8 ]
 
 # array2 = [ 0,'X',2,'X',
 #            4,'X',6,'X',
@@ -97,8 +96,8 @@ checking = Analize.new
 # game_streak2 = 4
 # player_symbol = 'X'
 
-# p checking.check_collumns(array, game_size1, game_streak1, player_name, player_symbol )
-# p checking.check_collumns(array2, game_size2, game_streak2, player_name, player_symbol )
+# p checking.check_collumns(array, game_size1, game_streak1, player_symbol )
+# p checking.check_collumns(array2, game_size2, game_streak2,player_symbol )
 
 
 # check_top_right_to_left
