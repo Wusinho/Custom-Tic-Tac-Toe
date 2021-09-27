@@ -28,15 +28,11 @@ After cloning open the file and write in terminal:
 The code:
 
 ### Game's instructions
-<ul>
-  <li>
-    Tic-Tac-Toe is a two players game.
-    Follow the instructions on the screen to input the names of the players
-    Each player has to select a number on the board between 1 to 9
-    If you select a number outside the range or a position is already taken, you will need to select again.
-    If there's a winner or there aren't any possible movements, the match ends.
-  </li>
-</ul>
+>- Enter players name
+>- Every player can have a unique symbol
+>- Choose between the grid sizes 3-10
+>- Choose the consecutive marks to win 3-5
+>- Play!
 
 ### Authors
 
