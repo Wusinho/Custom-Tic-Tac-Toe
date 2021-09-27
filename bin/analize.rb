@@ -1,19 +1,23 @@
-class Analize
+module Analize
   
   #method that evaluates arrays
-  def eval_array(size, streak, arr, simbol)
+  def eval_array(streak, arr, simbol)
     return if arr == []
-    n_times =  size - (streak -1)
+    n_times =  arr.length - (streak -1)
       n_times.times do |count|
-        return true && arr[count...streak+count].all?{|x| x == simbol} 
+        element = arr[count...streak+count]
+        return true if element.all?{|x| x == simbol} 
+        
       end
+    false
   end
 
   def check_rows(arr, size, streak, simbol )
+    eval_arr = []
       size.times do |index|
          eval_arr = arr[index*size...size*(index+1)]
 
-        return true if eval_array(size, streak, eval_arr, simbol)
+        return true if eval_array(streak, eval_arr, simbol)
 
       end
     false
@@ -29,7 +33,7 @@ class Analize
         end
       end
 
-      return true if eval_array(size, streak, eval_arr, simbol)
+      return true if eval_array(streak, eval_arr, simbol)
       eval_arr = []
     
     end
@@ -51,8 +55,8 @@ class Analize
         eval_arr2 << second_half if eval_arr2.length < (size - count) && count > 0
       end
 
-      return true if eval_array(size, streak, eval_arr, simbol)
-      return true if eval_array(size, streak, eval_arr2, simbol)
+      return true if eval_array(streak, eval_arr, simbol)
+      return true if eval_array(streak, eval_arr2, simbol)
   
     eval_arr = []
     eval_arr2 = []
@@ -84,8 +88,8 @@ class Analize
       end
       
 
-        return true if eval_array(size, streak, eval_arr, simbol)
-        return true if eval_array(size, streak, eval_arr2, simbol)
+        return true if eval_array(streak, eval_arr, simbol)
+        return true if eval_array(streak, eval_arr2, simbol)
         eval_arr = []
         eval_arr2 = []  
   

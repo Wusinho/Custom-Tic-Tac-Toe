@@ -1,7 +1,8 @@
 require_relative './analize.rb'
 
 class BoardGame
-  attr_accessor :game_board, :size
+  # attr_accessor :game_board, :size, :streaks
+  include Analize
 
   def initialize(size, streaks, player1, player2 )
     @size = size
@@ -48,26 +49,27 @@ class BoardGame
   def valid_move?(index, symbol_player1, symbol_player2)
     index.between?(0, @game_board.length-1) && !postion_taken?(index, symbol_player1, symbol_player2)
   end
+
   def new_move(index, symbol )
       @game_board[index] = symbol
   end
 
+  def check_win(symbol)
+    # p @game_board, @size, @streaks, symbol 
 
-end
+    # p check_rows(@game_board, @size, @streaks, symbol )
+    return true if check_rows(@game_board, @size, @streaks, symbol )
 
-class Game < BoardGame
-  def initialize(size, streaks, player1, player2 )
-    @size = size
-    @game_board = []
-    @player1 = player1
-    @player2 = player2
-    @streaks = streaks
+    # p check_collumns(@game_board, @size, @streaks, symbol )
+    return true if check_collumns(@game_board, @size, @streaks, symbol )
+
+    # p check_top_left_to_right(@game_board, @size, @streaks, symbol ) 
+    return true if check_top_left_to_right(@game_board, @size, @streaks, symbol ) 
+
+    # p check_down_left_to_right(@game_board, @size, @streaks, symbol )
+    return true if check_down_left_to_right(@game_board, @size, @streaks, symbol )
   end
 
 
-
-  def turns
-    
-  end
 end
 
