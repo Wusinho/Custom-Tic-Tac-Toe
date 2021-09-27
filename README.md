@@ -1,11 +1,10 @@
-# Tic-Tac-Toe Custom
+# Custom Tic-Tac-Toe 
 This is a Tic-Tac-Toe custom game, it is possible to choose the size of the canvas, the first player, the player's symbol and the consecutive number of markers needed to win.
 
 Common definition of Tic-Tac-Toe
 
-> "Paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner."
+> "It's a two player game, X or O, up to the players. Take turns marking the spaces in a 3×3, 5x5 or 10x10 grid. The player who succeeds in placing the chosen number of consecutives marks in horizontal, vertical, or diagonal row is the winner."
 
-The main goal is to put into practice the main concepts of Object-Oriented Programming. Particularly, classes and access to their attributes.
 
 ## Built With
 

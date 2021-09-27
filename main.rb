@@ -1,5 +1,6 @@
-  require_relative './bin/game.rb'
+  require_relative './lib/game.rb'
 
+  # Method to verify if its a correct input
   def check_class(data, max_num, min_num)
     return unless Integer(data, exception: false)
     counter = Integer(data)
@@ -7,14 +8,12 @@
     true
   end
 
-  round =0
 
 player1 = {
   name: '',
   symbol: '',
   starts: false,
   win: false,
-  draw: false,
 }
 
 player2 = {
@@ -22,23 +21,7 @@ player2 = {
   symbol: '',
   starts: false,
   win: false,
-  draw: false,
 }
-# player1 = {
-#   name: 'heber',
-#   symbol: 'X',
-#   starts: false,
-#   win: false,
-#   draw: false,
-# }
-
-# player2 = {
-#   name: 'juan',
-#   symbol: 'T',
-#   starts: true,
-#   win: false,
-#   draw: false,
-# }
 
 # Player 1 name
 puts 'Please enter a name for player1'
@@ -86,8 +69,11 @@ puts "Who starts #{player1[:name]} or #{player2[:name]}, type the correct name  
 
   end
 
+# rounds
+round =0
 max_rounds = board_size.to_i * board_size.to_i
 
+# who starts?
 first_player = player2[:starts] ? player2 : player1
 second_player = !player2[:starts] ? player2 : player1
 
@@ -95,6 +81,7 @@ game = BoardGame.new(board_size.to_i, win_streak.to_i,first_player, second_playe
 game.create_board
 game.display_board
 
+  # Loop until a winner or draw
   until player1[:win] || player2[:win]
 
     @current_player = round.even? ? first_player : second_player
