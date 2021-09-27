@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength
 module Analize
   # method that evaluates arrays
   def eval_array(streak, arr, simbol)
@@ -89,3 +90,5 @@ module Analize
     false
   end
 end
+
+# rubocop:enable Metrics/MethodLength
