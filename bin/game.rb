@@ -1,7 +1,6 @@
 require_relative './analize.rb'
 
 class BoardGame
-  # attr_accessor :game_board, :size, :streaks
   include Analize
 
   def initialize(size, streaks, player1, player2 )
@@ -55,21 +54,10 @@ class BoardGame
   end
 
   def check_win(symbol)
-    # p @game_board, @size, @streaks, symbol 
-
-    # p check_rows(@game_board, @size, @streaks, symbol )
     return true if check_rows(@game_board, @size, @streaks, symbol )
-
-    # p check_collumns(@game_board, @size, @streaks, symbol )
     return true if check_collumns(@game_board, @size, @streaks, symbol )
-
-    # p check_top_left_to_right(@game_board, @size, @streaks, symbol ) 
     return true if check_top_left_to_right(@game_board, @size, @streaks, symbol ) 
-
-    # p check_down_left_to_right(@game_board, @size, @streaks, symbol )
     return true if check_down_left_to_right(@game_board, @size, @streaks, symbol )
   end
-
-
 end
 
