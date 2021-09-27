@@ -106,7 +106,6 @@ game.display_board
   puts "#{@current_player[:name]} choose #{players_move}"
     game.new_move(players_move,  @current_player[:symbol])
     game.display_board
-    # p game.check_win(@current_player[:symbol])
     puts "#{@current_player[:name]} WINS!" if game.check_win(@current_player[:symbol])
     @current_player[:win] = game.check_win(@current_player[:symbol]) if game.check_win(@current_player[:symbol])
 
